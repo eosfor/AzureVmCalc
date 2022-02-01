@@ -39,6 +39,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
+      dir env:\
       
       Write-Host "Publishing the binaries"
       Write-Host "Binaries folder is $(Agent.BuildDirectory)"
