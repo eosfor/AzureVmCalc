@@ -26,9 +26,9 @@ steps:
   inputs:
     command: 'build'
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     command: 'test'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
 
 # - task: NuGetToolInstaller@1
 
@@ -42,7 +42,7 @@ steps:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# - task: VSTest@2
+#   inputs:
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
