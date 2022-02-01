@@ -42,9 +42,9 @@ steps:
       dir env:\
       
       Write-Host "Publishing the binaries"
-      Write-Host "Binaries folder is $(SYSTEM_DEFAULTWORKINGDIRECTORY)"
+      Write-Host "Binaries folder is $(SYSTEM.DEFAULTWORKINGDIRECTORY)"
       
-      Copy-Item -Path "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\bin\Debug\net6.0" -Destination "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -Force -Recurse
+      Copy-Item -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\bin\Debug\net6.0" -Destination "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -Force -Recurse
       
-      dir "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
     pwsh: true
