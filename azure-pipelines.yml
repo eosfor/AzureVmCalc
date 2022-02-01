@@ -41,9 +41,9 @@ steps:
       # Write your PowerShell commands here.
       
       Write-Host "Publishing the binaries"
-      Write-Host "Binaries folder is $($(Agent.BuildDirectory))"
+      Write-Host "Binaries folder is $(Agent.BuildDirectory)"
       
-      Rename-Item -Path "$($(Agent.BuildDirectory))\bin\Debug\net6.0" -NewName "AzureVmCalc"
+      Rename-Item -Path "$(Agent.BuildDirectory)\bin\Debug\net6.0" -NewName "AzureVmCalc"
       
-      dir "$($(Agent.BuildDirectory))\bin\Debug\AzureVmCalc"
+      dir "$(Agent.BuildDirectory)\bin\Debug\AzureVmCalc"
     pwsh: true
