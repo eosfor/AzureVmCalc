@@ -35,12 +35,12 @@ namespace z3testps
             int[] costVector = targetVMs.Select(x => (int)(double.Parse(x.retailPrice) * 10000)).ToArray();
             int[] acuVector = targetVMs.Select(x => int.Parse(x.ACUs)).ToArray();
 
-            string orToolsStringParameters = string.Empty;
-            orToolsStringParameters += $"max_time_in_seconds:{MaxExecutionTimeSec}";
-            orToolsStringParameters += $"num_search_workers:4";
+            List<string> orToolsStringParameters = new List<string>();
+            orToolsStringParameters.Add($"max_time_in_seconds:{MaxExecutionTimeSec}");
+            orToolsStringParameters.Add($"num_search_workers:4");
             if (EnableOrToolsLog.IsPresent)
             {
-                orToolsStringParameters += "log_search_progress: true";
+                orToolsStringParameters.Add("log_search_progress: true");
             }
 
             IntVar[,] selectedVms;
@@ -56,17 +56,8 @@ namespace z3testps
             model.Maximize(LinearExpr.Sum(tmpAcu));
             
             solver = new CpSolver();
-            solver.StringParameters = orToolsStringParameters;
+            solver.StringParameters = string.Join(",", orToolsStringParameters);
             status = solver.Solve(model, cb);
-
-            if (status == CpSolverStatus.Optimal || status == CpSolverStatus.Feasible)
-            {
-                WriteObject(_results);
-            }
-            else
-            {
-                WriteObject(status);
-            }
 
             // fix the optimized value by adding it as a constraint
             // recreate and rerun the model
@@ -75,7 +66,7 @@ namespace z3testps
             model.Minimize(LinearExpr.Sum(tmpSum));
 
             solver = new CpSolver();
-            solver.StringParameters = orToolsStringParameters;
+            solver.StringParameters = string.Join(",", orToolsStringParameters);
             status = solver.Solve(model, cb);
 
             if (status == CpSolverStatus.Optimal || status == CpSolverStatus.Feasible)
