@@ -42,9 +42,9 @@ steps:
       dir env:\
       
       Write-Host "Publishing the binaries"
-      Write-Host "Binaries folder is $(Agent.BuildDirectory)"
+      Write-Host "Binaries folder is $(SYSTEM_DEFAULTWORKINGDIRECTORY)"
       
-      Rename-Item -Path "$(Agent.BuildDirectory)\bin\Debug\net6.0" -NewName "AzureVmCalc"
+      Copy-Item -Path "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\bin\Debug\net6.0" -Destination "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -Force -Recurse
       
-      dir "$(Agent.BuildDirectory)\bin\Debug\AzureVmCalc"
+      dir "$(SYSTEM_DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
     pwsh: true
