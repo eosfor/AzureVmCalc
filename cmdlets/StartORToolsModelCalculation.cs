@@ -5,7 +5,7 @@ using Google.OrTools.Sat;
 using System.Management.Automation;
 using System.Text;
 
-namespace z3testps
+namespace AzureVmCalc
 {
     [Cmdlet(VerbsLifecycle.Start, "OrToolsModelCalculation")]
     public class StartOrToolsModelCalculation : BaseCMDLet
@@ -71,7 +71,7 @@ namespace z3testps
 
             if (status == CpSolverStatus.Optimal || status == CpSolverStatus.Feasible)
             {
-                WriteObject(_results);
+                WriteObject(_results, true);
             }
             else
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Google.OrTools.LinearSolver;
 using Google.OrTools.Sat;
 
-namespace z3testps
+namespace AzureVmCalc
 {
     public class SolutionPrinter: CpSolverSolutionCallback
     {

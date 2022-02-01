@@ -1,4 +1,4 @@
-﻿namespace z3testps
+﻿namespace AzureVmCalc
 {
     public class SourceVMRecord
     {

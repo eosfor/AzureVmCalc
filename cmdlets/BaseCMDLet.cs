@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Google.OrTools.Sat;
 
-namespace z3testps
+namespace AzureVmCalc
 {
     public abstract class BaseCMDLet: PSCmdlet
     {

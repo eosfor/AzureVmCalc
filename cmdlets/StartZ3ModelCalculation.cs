@@ -3,7 +3,7 @@ using System.Management.Automation;
 using Microsoft.Z3;
 using System.Linq;
 
-namespace z3testps
+namespace AzureVmCalc
 {
     [Cmdlet(VerbsLifecycle.Start, "Z3ModelCalculation")]
     public class StartZ3ModelCalculation: BaseCMDLet
