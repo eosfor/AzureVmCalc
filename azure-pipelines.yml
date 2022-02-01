@@ -33,6 +33,7 @@ steps:
     publishTestResults: true
     arguments: '--collect "Code coverage"'
 
+
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
@@ -40,9 +41,9 @@ steps:
       # Write your PowerShell commands here.
       
       Write-Host "Publishing the binaries"
-      Write-Host "Binaries folder is $(Build.BinariesDirectory)"
+      Write-Host "Binaries folder is $($(Agent.BuildDirectory))"
       
-      Rename-Item -Path "$(Build.BinariesDirectory)\bin\Debug\net6.0" -NewName "AzureVmCalc"
+      Rename-Item -Path "$($(Agent.BuildDirectory))\bin\Debug\net6.0" -NewName "AzureVmCalc"
       
-      dir "$(Build.BinariesDirectory)\bin\Debug\AzureVmCalc"
+      dir "$($(Agent.BuildDirectory))\bin\Debug\AzureVmCalc"
     pwsh: true
