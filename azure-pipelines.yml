@@ -69,13 +69,13 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      cp c:\windows\system32\vcruntime140*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\vcomp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\vccorlib140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\vcamp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\msvcp140_*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\msvcp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\concrt140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\vcruntime140*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\vcomp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\vccorlib140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\vcamp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\msvcp140_*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\msvcp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      copy-item c:\windows\system32\concrt140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
     pwsh: true
   displayName: "copy vc-runtime libs to the output folder"
 
