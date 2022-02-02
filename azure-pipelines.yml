@@ -27,7 +27,7 @@ steps:
       dir env:\
       dir c:\windows\system32\vcruntime140*.dll
       dir c:\windows\system32\vcomp140.dll
-      dir c:\windows\system32\vccorlib.dll
+      dir c:\windows\system32\vccorlib140.dll
       dir c:\windows\system32\vcamp140.dll
       dir c:\windows\system32\msvcp140_*.dll
       dir c:\windows\system32\msvcp140.dll
