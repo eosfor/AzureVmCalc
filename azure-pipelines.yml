@@ -25,6 +25,10 @@ steps:
     script: |
       # Write your PowerShell commands here.
       dir env:\
+      dir c:\windows\system32\vcruntime*
+      dir c:\windows\system32\vcco*
+      dir c:\windows\system32\msvcp*
+      dir c:\windows\system32\concrt*
     pwsh: true
 
 - task: UseDotNet@2
