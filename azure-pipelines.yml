@@ -26,7 +26,7 @@ steps:
       # Write your PowerShell commands here.
       dir env:\
       dir c:\windows\system32\vcruntime140*.dll
-      dir c:\windows\system32\vccomp140.dll
+      dir c:\windows\system32\vcomp140.dll
       dir c:\windows\system32\vccorlib.dll
       dir c:\windows\system32\vcamp140.dll
       dir c:\windows\system32\msvcp140_*.dll
@@ -70,7 +70,7 @@ steps:
     script: |
       # Write your PowerShell commands here.
       cp c:\windows\system32\vcruntime140*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
-      dir c:\windows\system32\vccomp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\vcomp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
       dir c:\windows\system32\vccorlib.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
       dir c:\windows\system32\vcamp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
       dir c:\windows\system32\msvcp140_*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
