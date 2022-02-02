@@ -33,6 +33,15 @@ steps:
     publishTestResults: true
     arguments: '--collect "Code coverage"'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: $(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc.csproj
+    publishWebProjects: false
+    arguments: '--self-contained --use-current-runtime -o $(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc'
+    zipAfterPublish: false
+    modifyOutputPath: false
+
 
 - task: PowerShell@2
   inputs:
