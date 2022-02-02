@@ -57,5 +57,5 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      Publish-Module -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -NuGetApiKey $(psgallerykey)
+      Publish-Module -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -NuGetApiKey "$(psgallerykey)"
     pwsh: true
