@@ -30,7 +30,7 @@ CompanyName = 'none'
 Copyright = '(c) Andrey_Vernigora. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'The module helps optimize the Azure Cloud VM costs by mapping source server list to Azure VM sizes. The module tries to maximize total ACU and minimize costs by using Google or-tools/Microsoft Z3'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
