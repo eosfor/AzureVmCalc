@@ -5,7 +5,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
-- master
+- dev
 
 pool:
   vmImage: 'windows-latest'
@@ -13,9 +13,18 @@ pool:
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
+  group: PSGalleryGroup
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      dir env:\
+    pwsh: true
+
 - task: UseDotNet@2
   displayName: "Install .NET Core SDK"
   inputs:
@@ -48,6 +57,5 @@ steps:
     targetType: 'inline'
     script: |
       # Write your PowerShell commands here.
-      dir env:\
-      dir "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      Publish-Module -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -NuGetApiKey $(psgallerykey)
     pwsh: true
