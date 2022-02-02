@@ -25,11 +25,15 @@ steps:
     script: |
       # Write your PowerShell commands here.
       dir env:\
-      dir c:\windows\system32\vcruntime*
-      dir c:\windows\system32\vcco*
-      dir c:\windows\system32\msvcp*
-      dir c:\windows\system32\concrt*
+      dir c:\windows\system32\vcruntime140*.dll
+      dir c:\windows\system32\vccomp140.dll
+      dir c:\windows\system32\vccorlib.dll
+      dir c:\windows\system32\vcamp140.dll
+      dir c:\windows\system32\msvcp140_*.dll
+      dir c:\windows\system32\msvcp140.dll
+      dir c:\windows\system32\concrt140.dll
     pwsh: true
+  displayName: "dislay env vars"
 
 - task: UseDotNet@2
   displayName: "Install .NET Core SDK"
@@ -41,12 +45,14 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+  displayName: "dotnet build"
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     publishTestResults: true
     arguments: '--collect "Code coverage"'
+  displayName: "dotnet test"
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -56,7 +62,22 @@ steps:
     arguments: '--self-contained --use-current-runtime -o $(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc'
     zipAfterPublish: false
     modifyOutputPath: false
+  displayName: "dotnet publish"
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      cp c:\windows\system32\vcruntime140*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\vccomp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\vccorlib.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\vcamp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\msvcp140_*.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\msvcp140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+      dir c:\windows\system32\concrt140.dll "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc"
+    pwsh: true
+  displayName: "copy vc-runtime libs to the output folder"
 
 - task: PowerShell@2
   inputs:
@@ -66,3 +87,4 @@ steps:
       Publish-Module -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -NuGetApiKey "$(psgallerykey)"
     pwsh: true
   condition: eq(variables['publish'], 'true')
+  displayName: "publish to the psgallery"
