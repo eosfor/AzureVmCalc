@@ -61,3 +61,4 @@ steps:
       # Write your PowerShell commands here.
       Publish-Module -Path "$(SYSTEM.DEFAULTWORKINGDIRECTORY)\AzureVmCalc" -NuGetApiKey "$(psgallerykey)"
     pwsh: true
+  condition: eq(variables['publish'], 'true')
