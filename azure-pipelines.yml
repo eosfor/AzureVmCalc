@@ -10,11 +10,13 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+# variables:
+#   solution: '**/*.sln'
+#   buildPlatform: 'Any CPU'
+#   buildConfiguration: 'Debug'
+
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Debug'
-  group: PSGalleryGroup
+- group: PSGalleryGroup-DEV
 
 steps:
 - task: PowerShell@2
